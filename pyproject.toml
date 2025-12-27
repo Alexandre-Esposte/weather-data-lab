@@ -4,7 +4,12 @@ version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "weather",
+]
 
 [tool.uv.workspace]
-members = [ "libs/weather"]
+members = [ "libs/weather", "libs/*"]
+
+[tool.uv.sources]
+weather = { workspace = true }
