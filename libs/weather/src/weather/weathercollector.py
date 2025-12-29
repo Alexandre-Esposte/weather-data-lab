@@ -5,7 +5,22 @@ import pandas as pd
 import requests
 
 
-def get_currentweather(latitude, longitude)-> WeatherCurrentData:
+def get_currentweather(latitude: float, longitude:float)-> WeatherCurrentData:
+    """
+    Retrieve current weather data for a given geographic location.
+
+    Args:
+        latitude (float): Latitude in decimal degrees (WGS84).
+        longitude (float): Longitude in decimal degrees (WGS84).
+
+    Returns:
+        WeatherCurrentData: Current weather data for the specified location.
+
+    Raises:
+        requests.exceptions.RequestException: If the HTTP request fails.
+        SystemExit: If the weather data cannot be retrieved.
+    """
+
     url = "https://api.open-meteo.com/v1/forecast"
     params = {
             "latitude": latitude,
@@ -43,6 +58,22 @@ def get_currentweather(latitude, longitude)-> WeatherCurrentData:
         
 
 def get_historical_weather(start_date:str, end_date:str, latitude:float, longitude:float):
+    """
+    Retrieve historical weather data for a given location and time range.
+
+    Args:
+        start_date (str): Start date in ISO format (YYYY-MM-DD).
+        end_date (str): End date in ISO format (YYYY-MM-DD).
+        latitude (float): Latitude in decimal degrees (WGS84).
+        longitude (float): Longitude in decimal degrees (WGS84).
+
+    Returns:
+        Any: Historical weather data for the specified period.
+
+    Raises:
+        requests.exceptions.RequestException: If the HTTP request fails.
+        SystemExit: If historical weather data cannot be retrieved.
+    """
     url = "https://historical-forecast-api.open-meteo.com/v1/forecast"
     params = {
         "latitude": latitude,
