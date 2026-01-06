@@ -5,11 +5,17 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "weather",
+    "weather-inmet",
+    "weather-openmeteo",
 ]
 
 [tool.uv.workspace]
-members = [ "libs/weather", "libs/*"]
+members = [
+    "libs/weather_openmeteo",
+    "libs/weather_inmet",
+]
 
 [tool.uv.sources]
-weather = { workspace = true }
+weather-inmet = { workspace = true }
+weather-openmeteo = { workspace = true }
+
