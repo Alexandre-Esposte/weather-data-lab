@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 from station_historical_data_collector import get_historical_data
 from station_historical_data_process import process_weather_data
+from schemas.database_schema import Base, Stations
 import logging
 import shutil
 
@@ -43,6 +44,10 @@ def main():
 
     # Criando tabelas e inputando dados no banco de dados
     engine = create_engine(f"postgresql+psycopg://{user}:{password}@{host}:{port}/{database}")
+    with engine.connect() as conn:
+        print('Connected to database')
+    Base.metadata.create_all(engine)
+
 
     with Session(engine) as session:
         pass
